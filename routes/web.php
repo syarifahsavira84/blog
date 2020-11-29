@@ -2,7 +2,6 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +17,13 @@ use App\Http\Controllers\BlogController;
 //     return view('welcome');
 // });
 Route::get('/',[BlogController::class, 'index']);
-
-
+// Route::get('/isi_post', function () {
+//     return view('blog.isi_post');
+// });
+Route::get('/isi_post/{slug}',[BlogController::class, 'isi_blog'])->name('blog.isi');
+Route::get('/list_post',[BlogController::class, 'list_blog'])->name('blog.list');
+Route::get('/list_category/{category}',[BlogController::class, 'list_category'])->name('blog.category');
+Route::get('/cari',[BlogController::class, 'cari'])->name('blog.cari');
 
 Route::middleware('auth')->group(function(){
 	Route::get('/home', function () {
